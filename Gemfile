@@ -36,6 +36,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'rspec-rails'
+  gem 'jasmine-rails'
 end
 
 group :development do
