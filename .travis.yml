@@ -1,4 +1,11 @@
 language: ruby
 rvm:
-  - 2.2.1
+- 2.2.1
 script: rake travis
+deploy:
+  provider: heroku
+  api_key:
+    secure: YhJp134mDtj49SoQU32MJBZ2DI8sbG/YmzflBL4UrRsRFHONlKO+uSY1fYe39UUv4I5I0ujvDzcU7VkGiF0FAMdphUNU4lxVmEHUfKrBW4xxzZsF2U5XDVQQOeZmn9/2503dUwpAJzRxoHEgCi6nSfD5uulKmN9D+g9pFL0mk5WDsFhpXyAwcJDOHvjmTUIeQqpT/glMSp1JuKanbhLRfqXDVMouw8FJ8z2SeZruPdDeRbwQCNeh20hpka49qkNa/u/5dW5kyQC+/cUljyYSVR9kBrmiGYQ6my+OB3yIzX0jvqo0FgOm0z5VO/gQnpvPaS7euqJ+BvVtL+pkTuyOIADmWeFidjdCYeNmZw1732rOf5FwU0hbYUGI1x9K0AcX2i9DBNlmuoIC2klcLAGbXp0i1mZs9OD8L2yOCe/bHTQPS+pH749tOoI4f6Xqqyfin3dByMdqXe7eW11jhbgXjez+LtNAd81lsW1iP6R89JTudbBwA0EtfgrwB8oFlrWbn/5nxUM7sHWvuJkBeNDHO0A5LhcBZrKhd5oP9CJNQrDKWrezSNJy3EudWEaHTCMCCg68VgHlJ/EAkN07RMKThG0+fNVuEK0b4t02VoKAHyATZ1GvwuOYv69UL4zl7NJ8ipXzZR3rFozTTB4WRqRrr2bkqIKQ6nMyoWepVL7WZUU=
+  app: sheltered-headland-8582
+  on:
+    repo: samlawrencejones/angular-rails-restauranteur
