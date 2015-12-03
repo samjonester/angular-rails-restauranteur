@@ -6,8 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 task :travis do
-  Rake::Task['db:migrate:reset'].invoke
-  Rake::Task['db:seed'].invoke
+  Rake::Task['db:migrate'].invoke
   Rake::Task['spec'].invoke
   Rake::Task['spec:javascript'].invoke
 end
