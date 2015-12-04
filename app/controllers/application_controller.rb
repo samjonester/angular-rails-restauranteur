@@ -7,5 +7,4 @@ class ApplicationController < ActionController::Base
     render 'layouts/application'
   end
 
-  # respond_to :json
 end

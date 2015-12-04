@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require angular/angular
-//= require angular/main
+// = require angular
+//= require angular-animate
+//= require angular-ui-router
 //= require_tree .

@@ -27,7 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'bower-rails'
+gem 'angular-rails-templates'
+gem 'sprockets'
 gem 'responders'
 
 group :development, :test do

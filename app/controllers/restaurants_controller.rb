@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
+    render text: Restaurant.count if params.has_key?(:count)
     @restaurants = Restaurant.all
   end
 

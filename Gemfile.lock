@@ -36,9 +36,14 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    angular-rails-templates (0.1.4)
+      railties (>= 3.1)
+      sprockets
+      tilt
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.10.0)
     builder (3.2.2)
     byebug (8.2.1)
     coffee-rails (4.1.0)
@@ -170,6 +175,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
+  bower-rails
   byebug
   coffee-rails (~> 4.1.0)
   jasmine-rails
@@ -183,6 +190,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  sprockets
   sqlite3
   uglifier (>= 1.3.0)
   web-console (~> 2.0)

@@ -1,17 +1,21 @@
-@restauranteur = angular.module('restauranteur', [])
+@restauranteur = angular.module("restauranteur", ["ui.router"])
 
-@restauranteur.config(['$routeProvider', ($routeProvider) ->
-  $routeProvider.
-    when('/restaurants', {
-      templateUrl: '/templates/restaurants/index.html',
-      controller: 'RestaurantIndexCtrl'
+@restauranteur.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", ($stateProvider, $urlRouterProvider, $locationProvider) ->
+  $urlRouterProvider.otherwise("/")
+  $stateProvider.
+    state("home", {
+      url: "/",
+      controller: "HomeCtrl",
+      templateUrl: "templates/home.html"
     }).
-    when('/restaurants/:id', {
-      templateUrl: '/templates/restaurants/show.html',
-      controller: 'RestaurantShowCtrl'
+    state("restaurants", {
+      url: "/restaurants",
+      controller: "RestaurantIndexCtrl",
+      templateUrl: "templates/restaurants/index.html"
     }).
-    otherwise({
-      templateUrl: '/templates/home.html',
-      controller: 'HomeCtrl'
+    state("restaurant", {
+      url: "/restaurants/:id",
+      controller: "RestaurantShowCtrl",
+      templateUrl: "templates/restaurants/show.html"
     })
 ])
