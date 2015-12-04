@@ -11,3 +11,34 @@ $ bundle install
 
 === Database Setup
 $ rake travis
+
+=== Toolchain Setup
+
+Gemfile
+  gem 'bower-rails'
+  gem 'angular-rails-templates'
+
+  group :development, :test do
+    gem 'rspec-rails'
+    gem 'jasmine-rails'
+  end
+
+Commands
+  $ bundle install
+  $ rails g rspec:install
+  $ rails g jasmine_rails:install
+  $ rails g bower_rails:install json
+  
+Rakefile
+  task :travis do
+    Rake::Task['db:migrate'].invoke
+    Rake::Task['spec'].invoke
+    Rake::Task['spec:javascript'].invoke
+  end
+
+.travis.yml
+
+  deploy:
+    run:
+    - "rake db:migrate:reset"
+    - "rake db:seed"
