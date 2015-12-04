@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  
-  root 'static_pages#index'
+
+  root 'application#angular'
 
   resources :restaurants
   # The priority is based upon order of creation: first created -> highest priority.
