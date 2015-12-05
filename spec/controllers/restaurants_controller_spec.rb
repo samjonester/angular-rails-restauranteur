@@ -39,7 +39,7 @@ RSpec.describe RestaurantsController, type: :controller do
   describe "GET #index" do
     it "assigns all restaurants as @restaurants" do
       restaurant = Restaurant.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {format: :json}, valid_session
       expect(assigns(:restaurants)).to eq([restaurant])
     end
   end
@@ -47,22 +47,7 @@ RSpec.describe RestaurantsController, type: :controller do
   describe "GET #show" do
     it "assigns the requested restaurant as @restaurant" do
       restaurant = Restaurant.create! valid_attributes
-      get :show, {:id => restaurant.to_param}, valid_session
-      expect(assigns(:restaurant)).to eq(restaurant)
-    end
-  end
-
-  describe "GET #new" do
-    it "assigns a new restaurant as @restaurant" do
-      get :new, {}, valid_session
-      expect(assigns(:restaurant)).to be_a_new(Restaurant)
-    end
-  end
-
-  describe "GET #edit" do
-    it "assigns the requested restaurant as @restaurant" do
-      restaurant = Restaurant.create! valid_attributes
-      get :edit, {:id => restaurant.to_param}, valid_session
+      get :show, {format: :json, :id => restaurant.to_param}, valid_session
       expect(assigns(:restaurant)).to eq(restaurant)
     end
   end
@@ -71,31 +56,21 @@ RSpec.describe RestaurantsController, type: :controller do
     context "with valid params" do
       it "creates a new Restaurant" do
         expect {
-          post :create, {:restaurant => valid_attributes}, valid_session
+          post :create, {format: :json, :restaurant => valid_attributes}, valid_session
         }.to change(Restaurant, :count).by(1)
       end
 
       it "assigns a newly created restaurant as @restaurant" do
-        post :create, {:restaurant => valid_attributes}, valid_session
+        post :create, {format: :json, :restaurant => valid_attributes}, valid_session
         expect(assigns(:restaurant)).to be_a(Restaurant)
         expect(assigns(:restaurant)).to be_persisted
-      end
-
-      it "redirects to the created restaurant" do
-        post :create, {:restaurant => valid_attributes}, valid_session
-        expect(response).to redirect_to(Restaurant.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved restaurant as @restaurant" do
-        post :create, {:restaurant => invalid_attributes}, valid_session
+        post :create, {format: :json, :restaurant => invalid_attributes}, valid_session
         expect(assigns(:restaurant)).to be_a_new(Restaurant)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, {:restaurant => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
       end
     end
   end
@@ -108,35 +83,23 @@ RSpec.describe RestaurantsController, type: :controller do
 
       it "updates the requested restaurant" do
         restaurant = Restaurant.create! valid_attributes
-        put :update, {:id => restaurant.to_param, :restaurant => new_attributes}, valid_session
+        put :update, {format: :json, :id => restaurant.to_param, :restaurant => new_attributes}, valid_session
         restaurant.reload
         expect(restaurant.name).to eq('New Name')
       end
 
       it "assigns the requested restaurant as @restaurant" do
         restaurant = Restaurant.create! valid_attributes
-        put :update, {:id => restaurant.to_param, :restaurant => valid_attributes}, valid_session
+        put :update, {format: :json, :id => restaurant.to_param, :restaurant => valid_attributes}, valid_session
         expect(assigns(:restaurant)).to eq(restaurant)
-      end
-
-      it "redirects to the restaurant" do
-        restaurant = Restaurant.create! valid_attributes
-        put :update, {:id => restaurant.to_param, :restaurant => valid_attributes}, valid_session
-        expect(response).to redirect_to(restaurant)
       end
     end
 
     context "with invalid params" do
       it "assigns the restaurant as @restaurant" do
         restaurant = Restaurant.create! valid_attributes
-        put :update, {:id => restaurant.to_param, :restaurant => invalid_attributes}, valid_session
+        put :update, {format: :json, :id => restaurant.to_param, :restaurant => invalid_attributes}, valid_session
         expect(assigns(:restaurant)).to eq(restaurant)
-      end
-
-      it "re-renders the 'edit' template" do
-        restaurant = Restaurant.create! valid_attributes
-        put :update, {:id => restaurant.to_param, :restaurant => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
       end
     end
   end
@@ -145,14 +108,8 @@ RSpec.describe RestaurantsController, type: :controller do
     it "destroys the requested restaurant" do
       restaurant = Restaurant.create! valid_attributes
       expect {
-        delete :destroy, {:id => restaurant.to_param}, valid_session
+        delete :destroy, {format: :json, :id => restaurant.to_param}, valid_session
       }.to change(Restaurant, :count).by(-1)
-    end
-
-    it "redirects to the restaurants list" do
-      restaurant = Restaurant.create! valid_attributes
-      delete :destroy, {:id => restaurant.to_param}, valid_session
-      expect(response).to redirect_to(restaurants_url)
     end
   end
 

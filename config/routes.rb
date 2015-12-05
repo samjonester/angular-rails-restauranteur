@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   root 'application#angular'
 
-  scope :format => true, :constraints => { :format => 'json' } do
-    resources :restaurants
-  end
+  resources :restaurants
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
