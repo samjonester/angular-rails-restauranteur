@@ -5,18 +5,23 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     autoWatch: true,
-    
-    preprocessors: {
-      '**/*.coffee': 'coffee'
-    },
+
+    browsers: [
+      'PhantomJS'
+    ],
 
     files: [
-      'app/assets/javascripts/angular/angular.js',
-      'app/assets/javascripts/angular/angular-mocks.js',
-      'app/assets/javascripts/angular/main.js.coffee',
-      'app/assets/javascripts/angular/controllers/RestaurantIndexCtrl.js.coffee',
-      'app/assets/javascripts/angular/*',
-      'spec/javascripts/*_spec.js.coffee'
+      //Bower
+      'lib/assets/bower_components/angular/angular.js',
+      'lib/assets/bower_components/angular-ui-router/release/angular-ui-router.js',
+      'lib/assets/bower_components/angular-mocks/angular-mocks.js',
+      //Mine
+      'app/assets/javascript/**/*.js.coffee',
+      'spec/javascripts/**/*.js.coffee'
+    ],
+
+    plugins: [
+      'karma-phantomjs-launcher'
     ]
   });
 };
