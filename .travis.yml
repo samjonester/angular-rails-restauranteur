@@ -9,6 +9,3 @@ deploy:
   app: sheltered-headland-8582
   on:
     repo: samlawrencejones/angular-rails-restauranteur
-  run:
-    - "rake db:migrate:reset"
-    - "rake db:seed"
