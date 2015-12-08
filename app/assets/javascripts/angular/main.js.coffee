@@ -1,6 +1,6 @@
 @restauranteur = angular.module("restauranteur", ["ui.router"])
 
-@restauranteur.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", ($stateProvider, $urlRouterProvider, $locationProvider) ->
+@restauranteur.config(["$stateProvider", "$urlRouterProvider", ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise("/")
   $stateProvider.
     state("home", {
@@ -18,14 +18,18 @@
       controller: "RestaurantCreateCtrl",
       templateUrl: "templates/restaurants/new.html"
     }).
+    state("restaurantDetails", {
+      url: "/restaurants/:id",
+      controller: "RestaurantShowCtrl",
+      templateUrl: "templates/restaurants/show.html"
+    }).
     state("editRestaurant", {
       url: "/restaurants/:id/edit",
       controller: "RestaurantEditCtrl",
       templateUrl: "templates/restaurants/edit.html"
     }).
-    state("restaurant", {
-      url: "/restaurants/:id",
-      controller: "RestaurantShowCtrl",
-      templateUrl: "templates/restaurants/show.html"
+    state("deleteRestaurant", {
+      url: "/restaurants/:id/delete",
+      controller: "RestaurantDeleteCtrl",
     })
 ])

@@ -1,8 +1,8 @@
-@restauranteur.controller "RestaurantCreateCtrl", ["$scope", "$http", "$location", ($scope, $http, $location)->
+@restauranteur.controller "RestaurantCreateCtrl", ["$scope", "$http", "$state", ($scope, $http, $state)->
   $scope.createRestaurant = ->
     $http.post("/restaurants.json", $scope.restaurant).then((response)->
         $scope.restaurant = response.data
-        $location.path("/restaurants/"+$scope.restaurant.id)
+        $state.go("restaurantDetails",{id: $scope.restaurant.id})
       , (response)->
         $scope.errorMessages = response.data
     )

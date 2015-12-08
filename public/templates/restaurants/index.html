@@ -1,5 +1,5 @@
 <div ng-repeat="restaurant in restaurants">
-  <a ng-href="#/restaurants/{{restaurant.id}}">{{restaurant.name}}</a>
+  <a ui-sref="restaurantDetails({id: restaurant.id})">{{restaurant.name}}</a>
 </div>
 <br/><br/>
-<a ng-href="#/restaurants/new">Create</a>
+<a ui-sref="newRestaurant">Create</a>

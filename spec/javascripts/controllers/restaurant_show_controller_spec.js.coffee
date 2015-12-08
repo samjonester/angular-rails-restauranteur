@@ -22,28 +22,3 @@ describe "Restaurant Show Controller", ->
       expect(scope.restaurant.name).toBe restaurant.name
       expect(scope.restaurant.id).toBe restaurant.id
     )
-
-    it "should delete a restaurant", inject(($controller, $httpBackend, $location) ->
-      restaurantId = 0
-      restaurant = {
-        name: "Arby's"
-        id: restaurantId
-      }
-
-      scope = {
-        restaurant: restaurant
-      }
-      $httpBackend.whenGET("/restaurants/"+restaurantId+".json").respond(200)
-      $httpBackend.whenDELETE("/restaurants/"+restaurantId+".json").respond(204)
-      spyOn($location, 'path')
-
-      $controller('RestaurantShowCtrl', {
-        $scope: scope
-        $stateParams: {id: restaurantId}
-      })
-      scope.deleteRestaurant()
-
-      $httpBackend.flush()
-      $httpBackend.expectDELETE("/restaurants/"+restaurantId+".json")
-      expect($location.path).toHaveBeenCalledWith("/restaurants")
-    )

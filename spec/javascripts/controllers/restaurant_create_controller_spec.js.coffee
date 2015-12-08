@@ -2,7 +2,7 @@ describe "Restaurant Create Controller", ->
   beforeEach module("restauranteur")
 
   describe "RestaurantCreateCtrl",  ->
-    it "should create a restaurant", inject(($controller, $httpBackend, $location) ->
+    it "should create a restaurant", inject(($controller, $httpBackend) ->
       restaurantIn = {
         name: "Arby's"
       }
@@ -12,24 +12,28 @@ describe "Restaurant Create Controller", ->
       }
 
       $httpBackend.whenPOST("/restaurants.json", restaurantIn).respond(201, restaurantOut)
-      spyOn($location, 'path')
       scope = {
         restaurant: restaurantIn
+      }
+      state = {
+        go: (url, params) ->
       }
 
       $controller('RestaurantCreateCtrl', {
         $scope: scope
+        $state: state
       })
       scope.createRestaurant(restaurantIn)
+      spyOn(state, 'go')
 
       $httpBackend.flush()
       $httpBackend.expectPOST("/restaurants.json", restaurantIn)
-      expect($location.path).toHaveBeenCalledWith('/restaurants/'+restaurantOut.id)
+      expect(state.go).toHaveBeenCalledWith('restaurantDetails', {id: restaurantOut.id})
       expect(scope.restaurant.name).toBe restaurantOut.name
       expect(scope.restaurant.id).toBe restaurantOut.id
     )
 
-    it "should respond with errors when creation fails", inject(($controller, $httpBackend, $location) ->
+    it "should respond with errors when creation fails", inject(($controller, $httpBackend) ->
       restaurantIn = {
         name: ''
       }
@@ -41,11 +45,16 @@ describe "Restaurant Create Controller", ->
       scope = {
        restaurant: restaurantIn
       }
+      state = {
+        go: (url, params) ->
+      }
 
       $controller('RestaurantCreateCtrl', {
         $scope: scope
+        $state: state
       })
       scope.createRestaurant(restaurantIn)
+      spyOn(state, 'go')
 
       $httpBackend.flush()
       $httpBackend.expectPOST("/restaurants.json", restaurantIn)

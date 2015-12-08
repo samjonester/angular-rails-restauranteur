@@ -1,5 +1,5 @@
 {{restaurant.name}}
 <br/>
-<a ng-href="#/restaurants/{{restaurant.id}}/edit">Edit</a>
-<a href="#" ng-click="deleteRestaurant()">Delete</a>
-<a ng-href="#/restaurants">Back</a>
+<a ui-sref="editRestaurant({id: restaurant.id})">Edit</a>
+<a ui-sref="deleteRestaurant({id: restaurant.id})">Delete</a>
+<a ui-sref="restaurants">Back</a>
