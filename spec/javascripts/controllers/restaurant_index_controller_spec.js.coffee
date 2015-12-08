@@ -15,14 +15,14 @@ describe "Restaurant Index Controller", ->
       ]
 
       $httpBackend.whenGET("/restaurants.json").respond(restaurants)
-      $httpBackend.expectGET("/restaurants.json")
       scope = {}
 
       $controller('RestaurantIndexCtrl', {
         $scope: scope
       })
-      $httpBackend.flush()
 
+      $httpBackend.flush()
+      $httpBackend.expectGET("/restaurants.json")
       expect(scope.restaurants[0].name).toBe restaurants[0].name
       expect(scope.restaurants[0].id).toBe restaurants[0].id
       expect(scope.restaurants[1].name).toBe restaurants[1].name

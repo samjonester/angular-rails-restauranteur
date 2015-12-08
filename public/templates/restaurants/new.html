@@ -1,0 +1,10 @@
+<form name="restaurant" ng-submit="createRestaurant()">
+  <input type="text" ng-model="restaurant.name"/>
+  <br/>
+  <small class="error"
+    ng-show="errorMessages.name"
+    ng-bind="errorMessages.name"></small>
+    <br/>
+  <input type="submit" value="Create"/>
+</form>
+<a ng-href="#/restaurants">Back</a>

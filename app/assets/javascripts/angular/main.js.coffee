@@ -13,6 +13,16 @@
       controller: "RestaurantIndexCtrl",
       templateUrl: "templates/restaurants/index.html"
     }).
+    state("newRestaurant", {
+      url: "/restaurants/new",
+      controller: "RestaurantCreateCtrl",
+      templateUrl: "templates/restaurants/new.html"
+    }).
+    state("editRestaurant", {
+      url: "/restaurants/:id/edit",
+      controller: "RestaurantEditCtrl",
+      templateUrl: "templates/restaurants/edit.html"
+    }).
     state("restaurant", {
       url: "/restaurants/:id",
       controller: "RestaurantShowCtrl",
